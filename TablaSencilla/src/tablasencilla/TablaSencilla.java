@@ -16,6 +16,7 @@ public class TablaSencilla {
     public static Scanner tc = new Scanner(System.in);
     public static String[] puntos = {"J1", "J2"};
     public static String[] alumnos = {"Pepe", "Pablo"};
+    public static int [] suma=new int [2];
 
     /**
      * @param args the command line arguments
@@ -30,11 +31,13 @@ public class TablaSencilla {
      * @return 
      */
     public static int[][] cargarTabla() {
+        
         int[][] tabla = new int[2][2];
         for (int fila = 0; fila < tabla.length; fila++) {
             for (int col = 0; col < tabla[0].length; col++) {
                 System.out.print("Introduce el dato para la fila " + (fila + 1) + " columna " + (col + 1) + " : ");
                 tabla[fila][col] = tc.nextInt();
+                suma[fila]+=tabla[fila][col];
             }
             System.out.println();
         }
@@ -48,15 +51,19 @@ public class TablaSencilla {
         for (int i = 0; i < tabla[0].length; i++) {
             System.out.print("\t" + puntos[i]);
         }
+        System.out.print("\tTotal");
         System.out.println();
-        System.out.println("\t----------");
+        System.out.println("\t---------------------");
 
         for (int fila = 0; fila < tabla.length; fila++) {
             System.out.print(alumnos[fila]);
+            
             for (int col = 0; col < tabla[0].length; col++) {
                 System.out.print("\t" + tabla[fila][col]);
             }
+            System.out.println("\t"+suma[fila]);
             System.out.println("");
+            
         }
     }
 }
